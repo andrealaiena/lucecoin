@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=lucecoin Core
+Comment=Connect to the lucecoin P2P Network
+Comment[de]=Verbinde mit dem lucecoin peer-to-peer Netzwerk
+Comment[fr]=lucecoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=lucecoin, eşten eşe kriptografik sanal para birimi
+Exec=lucecoin-qt %u
+Terminal=false
+Type=Application
+Icon=lucecoin128
+MimeType=x-scheme-handler/lucecoin;
+Categories=Office;Finance;

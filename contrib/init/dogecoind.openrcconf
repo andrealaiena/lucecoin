@@ -1,0 +1,33 @@
+# /etc/conf.d/lucecoind: config file for /etc/init.d/lucecoind
+
+# Config file location
+#lucecoinD_CONFIGFILE="/etc/lucecoin/lucecoin.conf"
+
+# What directory to write pidfile to?  (created and owned by $lucecoinD_USER)
+#lucecoinD_PIDDIR="/var/run/lucecoind"
+
+# What filename to give the pidfile
+#lucecoinD_PIDFILE="${lucecoinD_PIDDIR}/lucecoind.pid"
+
+# Where to write lucecoind data (be mindful that the blockchain is large)
+#lucecoinD_DATADIR="/var/lib/lucecoind"
+
+# User and group to own lucecoind process
+#lucecoinD_USER="lucecoin"
+#lucecoinD_GROUP="lucecoin"
+
+# Path to lucecoind executable
+#lucecoinD_BIN="/usr/bin/lucecoind"
+
+# Nice value to run lucecoind under
+#lucecoinD_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+lucecoinD_OPTS="-disablewallet"
+
+# The timeout in seconds OpenRC will wait for lucecoind to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+lucecoinD_SIGTERM_TIMEOUT=60

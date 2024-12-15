@@ -1,0 +1,67 @@
+#!/bin/bash
+#
+#  lucecoind The lucecoin core server.
+#
+#
+# chkconfig: 345 80 20
+# description: lucecoind
+# processname: lucecoind
+#
+
+# Source function library.
+. /etc/init.d/functions
+
+# you can override defaults in /etc/sysconfig/lucecoind, see below
+if [ -f /etc/sysconfig/lucecoind ]; then
+        . /etc/sysconfig/lucecoind
+fi
+
+RETVAL=0
+
+prog=lucecoind
+# you can override the lockfile via lucecoinD_LOCKFILE in /etc/sysconfig/lucecoind
+lockfile=${lucecoinD_LOCKFILE-/var/lock/subsys/lucecoind}
+
+# lucecoind defaults to /usr/bin/lucecoind, override with lucecoinD_BIN
+lucecoind=${lucecoinD_BIN-/usr/bin/lucecoind}
+
+# lucecoind opts default to -disablewallet, override with lucecoinD_OPTS
+lucecoind_opts=${lucecoinD_OPTS--disablewallet}
+
+start() {
+    echo -n $"Starting $prog: "
+    daemon $DAEMONOPTS $lucecoind $lucecoind_opts
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && touch $lockfile
+    return $RETVAL
+}
+
+stop() {
+    echo -n $"Stopping $prog: "
+    killproc $prog
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && rm -f $lockfile
+    return $RETVAL
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        status $prog
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    *)
+        echo "Usage: service $prog {start|stop|status|restart}"
+        exit 1
+        ;;
+esac

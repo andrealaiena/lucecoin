@@ -1,0 +1,6 @@
+usr/local/bin/lucecoin-qt usr/bin
+share/pixmaps/lucecoin32.xpm usr/share/pixmaps
+share/pixmaps/lucecoin16.xpm usr/share/pixmaps
+share/pixmaps/lucecoin128.png usr/share/pixmaps
+debian/lucecoin-qt.desktop usr/share/applications
+debian/lucecoin-qt.protocol usr/share/kde4/services/
